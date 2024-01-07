@@ -1,3 +1,5 @@
+import React from "react";
+import { ReactDOM } from "react-dom/client";
 import { HelloWorld, anotherFunction } from "./another";
 
 const App = () => {

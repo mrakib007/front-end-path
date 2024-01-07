@@ -1,5 +1,5 @@
 export const HelloWorld = () => {
-  return React.createElement("p", {}, "Hello World");
+  return React.createElement("p", {}, "Hello World editing");
 };
 
 export const anotherFunction = () => {
