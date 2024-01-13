@@ -12,17 +12,26 @@ const ControlledForm = () => {
   const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
   };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(user);
+    const inputName = e.target.name;
+    const value = e.target.value;
+    setUser({ ...user, [inputName]: value });
+  };
+
+  //DRY -> Do not repeat yourself
   return (
     <form onSubmit={handleSubmit}>
       <input
         // onChange={(e) => setName(e.target.value)}
-        onChange={(e) => setUser({ ...user, name: e.target.value })}
+        onChange={handleChange}
         type="text"
         name="name"
       ></input>
       <input
         //   onChange={(e)=> setEmail(e.target.value)} type="text" name="email"></input>
-        onChange={(e) => setUser({ ...user, email: e.target.value })}
+        onChange={handleChange}
         type="text"
         name="email"
       ></input>
