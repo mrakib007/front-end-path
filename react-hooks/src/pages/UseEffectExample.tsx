@@ -41,4 +41,21 @@ const Counter = () => {
     return  <h1>{count}</h1>
 };
 
+const Todo = () => {
+  const controller = new AbortController();
+  const signal = controller.signal; //property
+  useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/todos/1',{signal})
+    .then(res => res.json())
+    .then(data => console.log(data));
+
+    return () =>{
+      controller.abort(); //method
+    }
+  }, []);
+  return <div>Todo</div> //9 minutes 50 seconds
+}
+
 export default UseEffectExample;
+
+
