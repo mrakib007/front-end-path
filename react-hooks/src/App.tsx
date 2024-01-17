@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import UseState from "./pages/UseState";
 import ControlledForm from "./pages/ControlledForm";
+import UserRefExample from "./pages/Module3/UserRefExample";
 
 function App() {
   const [counter, setCounter] = useState(0);
@@ -9,6 +10,7 @@ function App() {
     <>
       <UseState counter={counter} setCounter={setCounter} />
       <ControlledForm />
+      <UserRefExample/>
     </>
   );
 }
