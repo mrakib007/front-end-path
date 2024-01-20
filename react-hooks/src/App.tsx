@@ -3,11 +3,12 @@ import "./App.css";
 import UseState from "./pages/UseState";
 import ControlledForm from "./pages/ControlledForm";
 import UserRefExample from "./pages/Module3/UserRefExample";
-import { ThemeContext } from "./pages/Module3/context/ThemeProvider";
+import { TThemeContext, ThemeContext } from "./pages/Module3/context/ThemeProvider";
+import { MenuItem, MenuList } from "./pages/Module3/Menu";
 
 function App() {
   const [counter, setCounter] = useState(0);
-  const {dark,setDark} = useContext(ThemeContext);
+  const {dark,setDark} = useContext(ThemeContext) as TThemeContext;
   console.log(dark)
   return (
     <div className={`h-scree w-full flex justify-center items-center
@@ -19,6 +20,9 @@ function App() {
       <UseState counter={counter} setCounter={setCounter} />
       <ControlledForm />
       <UserRefExample/>
+      <MenuList>
+        <MenuItem></MenuItem>
+      </MenuList>
     </div>
   );
 }
