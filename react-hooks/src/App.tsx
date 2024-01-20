@@ -8,6 +8,7 @@ import { MenuItem, MenuList } from "./pages/Module3/Menu";
 import Profile from "./pages/Module3/Profile";
 import Game from "./pages/Module3/Game";
 import UsersContainer from "./pages/Module3/UsersContainer";
+import Select from "./pages/Module3/Select";
 
 function App() {
   const [counter, setCounter] = useState(0);
@@ -28,7 +29,13 @@ function App() {
       </MenuList> */}
       {/* <Profile/>
       <Game/> */}
-      <UsersContainer/>
+      {/* <UsersContainer/> */}
+      <Select>
+        <Select.SelectOption value="option1">Option1</Select.SelectOption>
+        <Select.SelectOption value="option2">Option2</Select.SelectOption>
+        <Select.SelectOption value="option3">Option3</Select.SelectOption>
+        <Select.SelectOption value="option4">Option4</Select.SelectOption>
+      </Select>
     </div>
   );
 }
