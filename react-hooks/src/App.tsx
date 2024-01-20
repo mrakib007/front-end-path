@@ -7,6 +7,7 @@ import { TThemeContext, ThemeContext } from "./pages/Module3/context/ThemeProvid
 import { MenuItem, MenuList } from "./pages/Module3/Menu";
 import Profile from "./pages/Module3/Profile";
 import Game from "./pages/Module3/Game";
+import UsersContainer from "./pages/Module3/UsersContainer";
 
 function App() {
   const [counter, setCounter] = useState(0);
@@ -25,8 +26,9 @@ function App() {
       <MenuList>
         <MenuItem></MenuItem>
       </MenuList> */}
-      <Profile/>
-      <Game/>
+      {/* <Profile/>
+      <Game/> */}
+      <UsersContainer/>
     </div>
   );
 }
