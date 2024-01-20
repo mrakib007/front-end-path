@@ -1,6 +1,7 @@
 import React from 'react';
 
 const UserList = ({isLoading,error,data}) => {
+    console.log(isLoading,error,data);
     if(isLoading && !error){
         return <div>Loading...</div>
     }
