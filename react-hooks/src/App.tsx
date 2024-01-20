@@ -5,6 +5,8 @@ import ControlledForm from "./pages/ControlledForm";
 import UserRefExample from "./pages/Module3/UserRefExample";
 import { TThemeContext, ThemeContext } from "./pages/Module3/context/ThemeProvider";
 import { MenuItem, MenuList } from "./pages/Module3/Menu";
+import Profile from "./pages/Module3/Profile";
+import Game from "./pages/Module3/Game";
 
 function App() {
   const [counter, setCounter] = useState(0);
@@ -17,12 +19,14 @@ function App() {
       <button className="btn btn-primary" 
       onClick={()=> setDark(!dark)}>Toggle</button>
     </div>
-      <UseState counter={counter} setCounter={setCounter} />
+      {/* <UseState counter={counter} setCounter={setCounter} />
       <ControlledForm />
       <UserRefExample/>
       <MenuList>
         <MenuItem></MenuItem>
-      </MenuList>
+      </MenuList> */}
+      <Profile/>
+      <Game/>
     </div>
   );
 }
