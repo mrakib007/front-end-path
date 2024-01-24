@@ -12,7 +12,7 @@ function App() {
       <h3>This is a h1 tag</h3>
       <button className="btn btn-primary">This is a button</button>
       <button className="btn py-2 btn-danger">This is a button</button> */}
-      <Button className='bg-red-500'/>
+      <Button variant="solid" className={"w-[500px]"}>Click</Button>
     </div>
    </Container>
   );
