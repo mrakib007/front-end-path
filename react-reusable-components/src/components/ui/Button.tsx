@@ -1,13 +1,20 @@
-import React from 'react';
-import { twMerge } from 'tailwind-merge';
-import { clsx } from 'clsx';
+import React, { forwardRef } from 'react';
 import cn from '../../utils/cn';
 
 // `bg-purple-500 px-3 py-2 rounded-md ${className}
 // ${variant == "outline" ? "border border-purple-500 bg-opacity-10" : ""}`
 
-const Button = ({ className, variant }) => {
-    const getVariant = () => {
+type TRef = HTMLButtonElement;
+type TVariant = "outline" | "ghost" | "solid";
+type TButton = React.DetailedHTMLProps<
+React.ButtonHTMLAttributes<HTMLButtonElement>,
+HTMLButtonElement> & TButtonOptions;
+type TButtonOptions = {
+    variant?: TVariant;
+}
+
+const Button = forwardRef<TRef, TButton>(({ className, variant = "solid", ...rest },ref) => {
+    const getVariant = (variant : TVariant) => {
         switch(variant) {
             case "outline":
                 return "btn-outline";
@@ -19,12 +26,12 @@ const Button = ({ className, variant }) => {
     };
     return (
         <button
-            className={cn(
-                getVariant(variant),
-                className)}>
+        {...rest}
+        ref={ref}
+            className={cn(getVariant(variant),className)}>
             Click
         </button>
     );
-};
+});
 
 export default Button;
