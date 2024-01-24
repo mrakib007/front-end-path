@@ -21,6 +21,15 @@ function App() {
            variant="outline" className="w-full">Open Modal</Button>
           <Modal isOpen={modal} onClose={handleModalClose}>
             <h1 className="text-2xl">This is a modal</h1>
+            {/* <Modal.CloseButton onClick={handleModalClose}>
+              Children Button
+            </Modal.CloseButton> */}
+            <Modal.Header>
+              <h1>This is Modal title</h1>
+            <Modal.CloseButton>
+            </Modal.CloseButton>
+            </Modal.Header>
+            <h1>This is modal content</h1>
           </Modal>
         </div>
       </div>
