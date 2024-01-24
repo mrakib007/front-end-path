@@ -13,7 +13,7 @@ type TButtonOptions = {
     variant?: TVariant;
 }
 
-const Button = forwardRef<TRef, TButton>(({ className, variant = "solid", ...rest },ref) => {
+const Button = forwardRef<TRef, TButton>(({ className, variant = "solid",children, ...rest },ref) => {
     const getVariant = (variant : TVariant) => {
         switch(variant) {
             case "outline":
@@ -29,7 +29,7 @@ const Button = forwardRef<TRef, TButton>(({ className, variant = "solid", ...res
         {...rest}
         ref={ref}
             className={cn(getVariant(variant),className)}>
-            Click
+            {children}
         </button>
     );
 });

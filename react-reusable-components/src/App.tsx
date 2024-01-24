@@ -1,9 +1,13 @@
-import MainLayout from "./components/layout/MainLayout";
+import { useState } from "react";
 import Button from "./components/ui/Button";
 import Container from "./components/ui/Container";
+import Modal from "./components/ui/Modal";
 
 function App() {
-
+  const [modal,setModal] = useState(false);
+  const handleModalClose = () => {
+    setModal((prev) => !prev);
+  }
   return (
     <Container>
       <div className="h-screen w-full flex justify-center items-center">
@@ -13,7 +17,11 @@ function App() {
       <button className="btn btn-primary">This is a button</button>
       <button className="btn py-2 btn-danger">This is a button</button> */}
         <div className="w-96 border border-red-500 p-10">
-          <Button variant="outline" className="w-full">Click</Button>
+          <Button onClick={() => setModal(prev=> !prev)}
+           variant="outline" className="w-full">Open Modal</Button>
+          <Modal isOpen={modal} onClose={handleModalClose}>
+            <h1 className="text-2xl">This is a modal</h1>
+          </Modal>
         </div>
       </div>
     </Container>
