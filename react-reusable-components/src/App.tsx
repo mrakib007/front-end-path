@@ -8,6 +8,13 @@ function App() {
   const handleModalClose = () => {
     setModal((prev) => !prev);
   }
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log("Form Submitted");
+    if(true){
+      handleModalClose();
+    }
+  }
   return (
     <Container>
       <div className="h-screen w-full flex justify-center items-center">
@@ -29,7 +36,10 @@ function App() {
             <Modal.CloseButton>
             </Modal.CloseButton>
             </Modal.Header>
-            <h1>This is modal content</h1>
+            <form onSubmit={handleSubmit}>
+              <input type="text" />
+              <button type="submit">Submit</button>
+            </form>
           </Modal>
         </div>
       </div>
