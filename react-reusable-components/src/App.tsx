@@ -1,21 +1,27 @@
 //learning about react reusable forms
 //Module 5 part
 
-import { FieldValues, useForm } from "react-hook-form";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import NormalForm from "./components/NormalForm/NormalForm";
-import { Form, FormSection, FormSubmit } from "./components/ReuseableForm";
+import { Form, FormSection, FormSubmit, Input } from "./components/ReuseableForm";
 import Container from "./components/ui/Container";
+import { z } from "zod";
 
 const App = () => {
-  const { handleSubmit, register, formState:{errors} } = useForm();
+  const { handleSubmit, register, formState: { errors } } = useForm<TTest>();
 
   const onSUbmit = (data: FieldValues) => {
     console.log(data);
   }
+  const TestSchema = z.object({
+    name: z.string(),
+    email: z.string().email(),
+  });
+  type TTest = z.infer<typeof TestSchema>;
   return (
     <Container>
       {/* <NormalForm/> */}
-      <Form onSubmit={handleSubmit(onSUbmit)}>
+      <Form double={true} onSubmit={handleSubmit(onSUbmit) as SubmitHandler<FieldValues>}>
         <FormSection>
           <div className="w-full max-w-md">
             <label className="block" htmlFor="name">Name</label>
@@ -24,6 +30,10 @@ const App = () => {
               {...register('name')} />
             {errors.name && <span className="text-red-500">{errors.name.message}</span>}
           </div>
+          <Input
+            type='email'
+            register={register('email')}
+            errors={errors} label={'Email'} />
         </FormSection>
         <FormSubmit />
       </Form>
