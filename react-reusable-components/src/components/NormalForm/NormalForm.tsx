@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import cn from "../../utils/cn";
+import Button from "../ui/Button";
 
 const NormalForm = () => {
     const {
@@ -15,11 +16,11 @@ const NormalForm = () => {
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}
-            className={cn("w-full p-5 mx-auto border border-red-500", {
+            className={cn("w-full p-5 mx-auto border border-gray-300 rounded-lg shadow-sm", {
                 "max-w-5xl": double,
                 "max-w-md": !double,
             })}>
-            <div className={cn("border border-green-500 grid grid-cols-1 justify-items-center gap-5", {
+            <div className={cn("grid grid-cols-1 justify-items-center gap-5", {
                 "md:grid-cols-2": double,
             })}>
                 <div className="w-full max-w-md">
@@ -62,7 +63,13 @@ const NormalForm = () => {
                 </div>
 
             </div>
-            {/* <button type="submit">Submit</button> */}
+            <div className={cn("grid grid-cols-1 justify-items-center gap-5 my-8", {
+                "md:grid-cols-2": double,
+            })}>
+                <div className="w-full max-w-md col-start-1 md:col-start-2 flex justify-end">
+                    <Button className="w-full md:w-fit" type="submit">Submit</Button>
+                </div>
+            </div>
         </form>
     );
 };
