@@ -1,14 +1,19 @@
-import { useForm } from "react-hook-form";
+import { FieldValues, useForm } from "react-hook-form";
 import cn from "../../utils/cn";
 import Button from "../ui/Button";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { SignUpSchema, TNormalForm } from "./validation";
 
 const NormalForm = () => {
     const {
         register,
         handleSubmit,
-    } = useForm();
+        formState: { errors },
+    } = useForm<TNormalForm>({
+        resolver: zodResolver(SignUpSchema)
+    });
 
-    const onSubmit = (data) => {
+    const onSubmit = (data : FieldValues) => {
         console.log(data);
     };
 
@@ -28,40 +33,28 @@ const NormalForm = () => {
                     <input
                         type="text" id="name"
                         {...register('name')} />
+                    {errors.name && <span className="text-red-500">{errors.name.message}</span>}
                 </div>
                 <div className="w-full max-w-md">
-                    <label className="block" htmlFor="name">Email</label>
-                    <input className="w-full" type="text" id="name" {...register('name')} />
+                    <label className="block" htmlFor="email">Email</label>
+                    <input className="w-full" type="text" id="email" {...register('email')} />
+                    {errors.email && <span className="text-red-500">{errors.email.message}</span>}
                 </div>
                 <div className="w-full max-w-md">
-                    <label className="block" htmlFor="name">Password</label>
-                    <input className="w-full" type="text" id="name" {...register('name')} />
-                </div>
-                <div className="w-full max-w-md">
-                    <label className="block" htmlFor="name">Select</label>
-                    <select>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                    </select>
-                </div>
-                <div className="w-full max-w-md">
-                    <label className="block" htmlFor="name">Select</label>
-                    <textarea />
-                </div>
-                <div className="w-full max-w-md">
-                    <label className="block" htmlFor="name">Select</label>
+                    <label className="block" htmlFor="password">Password</label>
                     <input
-                        className="
-                    border
-                     border-gray-400 rounded-md
-                      checked:bg-purple-500
-                      hover:bg-purple-500
-                      focus:bg-purple-500
-                      focus:border-purple-500
-                      focus:ring-purple-500
-                      focus:ring-1" type="checkbox" />
+                        className="w-full"
+                        type="password"
+                        id="password"
+                        {...register('password', {
+                            minLength: {
+                                value: 8,
+                                message: "Too short"
+                            }
+                        })}
+                    />
+                    {errors.password && (<span className="text-red-500">{errors.password.message}</span>)}
                 </div>
-
             </div>
             <div className={cn("grid grid-cols-1 justify-items-center gap-5 my-8", {
                 "md:grid-cols-2": double,
