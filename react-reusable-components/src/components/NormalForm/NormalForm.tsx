@@ -24,12 +24,9 @@ const NormalForm = () => {
             })}>
                 <div className="w-full max-w-md">
                     <label className="block" htmlFor="name">Name</label>
-                    <input className="w-full border
-                     border-gray-300 rounded-md
-                     focus:border-purple-500
-                     focus:ring-2 focus:ring-purple-200"
-                     type="text" id="name"
-                     {...register('name')} />
+                    <input
+                        type="text" id="name"
+                        {...register('name')} />
                 </div>
                 <div className="w-full max-w-md">
                     <label className="block" htmlFor="name">Email</label>
@@ -39,11 +36,32 @@ const NormalForm = () => {
                     <label className="block" htmlFor="name">Password</label>
                     <input className="w-full" type="text" id="name" {...register('name')} />
                 </div>
+                <div className="w-full max-w-md">
+                    <label className="block" htmlFor="name">Select</label>
+                    <select>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                    </select>
+                </div>
+                <div className="w-full max-w-md">
+                    <label className="block" htmlFor="name">Select</label>
+                    <textarea />
+                </div>
+                <div className="w-full max-w-md">
+                    <label className="block" htmlFor="name">Select</label>
+                    <input
+                        className="
+                    border
+                     border-gray-400 rounded-md
+                      checked:bg-purple-500
+                      hover:bg-purple-500
+                      focus:bg-purple-500
+                      focus:border-purple-500
+                      focus:ring-purple-500
+                      focus:ring-1" type="checkbox" />
+                </div>
+
             </div>
-            {/* <select>
-            <option value="1">1</option>
-            <option value="2">2</option>
-          </select> */}
             {/* <button type="submit">Submit</button> */}
         </form>
     );
