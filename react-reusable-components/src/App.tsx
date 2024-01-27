@@ -1,13 +1,32 @@
 //learning about react reusable forms
 //Module 5 part
 
+import { FieldValues, useForm } from "react-hook-form";
 import NormalForm from "./components/NormalForm/NormalForm";
+import { Form, FormSection, FormSubmit } from "./components/ReuseableForm";
 import Container from "./components/ui/Container";
 
 const App = () => {
+  const { handleSubmit, register, formState:{errors} } = useForm();
+
+  const onSUbmit = (data: FieldValues) => {
+    console.log(data);
+  }
   return (
     <Container>
-      <NormalForm/>
+      {/* <NormalForm/> */}
+      <Form onSubmit={handleSubmit(onSUbmit)}>
+        <FormSection>
+          <div className="w-full max-w-md">
+            <label className="block" htmlFor="name">Name</label>
+            <input
+              type="text" id="name"
+              {...register('name')} />
+            {errors.name && <span className="text-red-500">{errors.name.message}</span>}
+          </div>
+        </FormSection>
+        <FormSubmit />
+      </Form>
     </Container>
   );
 };
