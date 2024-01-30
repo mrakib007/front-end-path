@@ -1,35 +1,31 @@
-.main{
-  border: 2px solid black;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  perspective: 500px;
-  /* overflow: hidden; */
-  /* position: relative; */
+.btn{
+  border: 2px solid tomato;
+  color: tomato;
+  padding: 10px 20px;
+  background-color: transparent;
+  transition: 500ms;
+  transition-timing-function: ease;
+  position: relative;
+  overflow: hidden ;
 }
-.box-1{
-  /* position: absolute; */
-  background-color: red;
-  height: 150px;
-  width: 150px;
+.btn::after{
+  content: '';
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transition-property: all;
   transition-duration: 500ms;
   transition-timing-function: ease;
-  margin: 10px;
+  transform: scaleX(0);
+  z-index: -1;
 }
-.box-2{
-  /* position: absolute; */
-  /* background-color: blue;
-  height: 200px;
-  width: 200px;
-  transition-duration: 500ms;
-  transition-timing-function: ease; */
-  /* transform-origin: bottom right; */
+.btn:hover{
+  color: white;
 }
-.box-1:hover{
-  transform: rotateX(90deg);
-}
-.box-2:hover{
-  /* transform: rotate(180deg); */
-  /* transform: skew(45deg,30deg); */
+.btn:hover::after{
+  transform: scaleX(1);
+  background-color: tomato;
 }
