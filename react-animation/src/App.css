@@ -1,10 +1,10 @@
 .main{
-  /* border: 2px solid black; */
+  border: 2px solid black;
   display: flex;
   flex-direction: column;
-
   justify-content: center;
   align-items: center;
+  perspective: 500px;
   /* overflow: hidden; */
   /* position: relative; */
 }
@@ -19,17 +19,17 @@
 }
 .box-2{
   /* position: absolute; */
-  background-color: blue;
+  /* background-color: blue;
   height: 200px;
   width: 200px;
   transition-duration: 500ms;
-  transition-timing-function: ease;
+  transition-timing-function: ease; */
   /* transform-origin: bottom right; */
 }
 .box-1:hover{
-  transform: rotate(55deg);
+  transform: rotateX(90deg);
 }
 .box-2:hover{
   /* transform: rotate(180deg); */
-  transform: skew(45deg,30deg);
+  /* transform: skew(45deg,30deg); */
 }
