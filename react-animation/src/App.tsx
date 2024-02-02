@@ -4,9 +4,9 @@ function App() {
 
   return (
     <div className='main'>
-      <div className="loading">
-        <div className="glass"></div>
-        <div className="box"></div>
+      <div className="card">
+        <h1>Heading</h1>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae mollitia tenetur unde eum harum veritatis corporis minima inventore voluptate quo.</p>
       </div>
     </div>
   )
