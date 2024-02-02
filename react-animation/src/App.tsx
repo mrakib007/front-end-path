@@ -4,8 +4,9 @@ function App() {
 
   return (
     <div className='main'>
-      <div className="box">
-        
+      <div className="loading">
+        <div className="glass"></div>
+        <div className="box"></div>
       </div>
     </div>
   )
