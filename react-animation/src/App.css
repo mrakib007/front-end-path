@@ -1,31 +1,29 @@
-.btn{
-  border: 2px solid tomato;
-  color: tomato;
-  padding: 10px 20px;
-  background-color: transparent;
-  transition: 500ms;
-  transition-timing-function: ease;
-  position: relative;
-  overflow: hidden ;
+.box{
+  height: 100px;
+  width: 100px;
+  background-color: red;
+  animation-name: moving;
+  animation-duration: 3s;
+  animation-delay: 1000ms;
+  /* animation-fill-mode: forwards; */
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
-.btn::after{
-  content: '';
-  height: 100%;
-  width: 100%;
-  background-color: white;
-  position: absolute;
-  top: 0;
-  right: 0;
-  transition-property: all;
-  transition-duration: 500ms;
-  transition-timing-function: ease;
-  transform: scaleX(0);
-  z-index: -1;
-}
-.btn:hover{
-  color: white;
-}
-.btn:hover::after{
-  transform: scaleX(1);
-  background-color: tomato;
+@keyframes moving{
+  0% {
+    transform: translate(0);
+    background-color: blue;
+  }
+  25%{
+    transform: translate(50px);
+  }
+  50%{
+    transform: translate(50px, 50px);
+  }
+  75%{
+    transform: translate(-50px, 50px);
+  }
+  100%{
+    transform: translate(-50px,-50px);
+  }
 }

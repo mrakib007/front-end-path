@@ -4,7 +4,9 @@ function App() {
 
   return (
     <div className='main'>
-      <button className='btn'>Hover this</button>
+      <div className="box">
+        
+      </div>
     </div>
   )
 }
