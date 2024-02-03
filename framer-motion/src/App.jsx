@@ -1,15 +1,13 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-import Lesson1 from './pages/lesson1'
+// import Lesson1 from './pages/lesson1'
+import Lesson2 from './pages/Lesson2'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-    <Lesson1/>
+    {/* <Lesson1/> */}
+    <Lesson2 /> 
     </>
   )
 }
