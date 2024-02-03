@@ -1,18 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@500&family=Lato:ital,wght@0,400;0,700;1,400&family=Roboto+Mono&display=swap');
+
+*{
+  font-family: 'Lato', sans-serif;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
 .main{
+  background: #000038;
   height: 100vh;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.card{
-  background-color: tomato;
-  width: 500px;
-  padding: 20px;
-  border-radius: 20px;
-  clip-path: circle(5% at 95% 20%);
-  transition: all ease-in-out 500ms;
+.container{
+  font-size: 5rem;
+  font-weight: 700;
 }
-.card:hover{
-  clip-path: circle(70.7% at 50% 50%);
+.alphabet{
+  color: white;
+  transition: all ease-in-out;
+  transition-duration: 50ms;
+}
+.container:hover .alphabet{
+  color: #dc02dc;
 }

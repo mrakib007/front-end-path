@@ -2,11 +2,21 @@ import './App.css'
 
 function App() {
 
+  const name = 'Rakib Hasan Learning React Animation';
+  const nameArr = name.split('')
+
   return (
     <div className='main'>
-      <div className="card">
-        <h1>Heading</h1>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae mollitia tenetur unde eum harum veritatis corporis minima inventore voluptate quo.</p>
+      <div className='container'>
+        {
+          nameArr.map((item,i)=>(
+          <span 
+          className="alphabet"
+          style={{transitionDelay:`${i * 30}ms`}}>{item}
+          </span>
+          )
+          )
+        }
       </div>
     </div>
   )
