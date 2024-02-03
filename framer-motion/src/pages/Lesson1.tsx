@@ -2,14 +2,31 @@ import React from 'react';
 import { easeInOut, motion } from 'framer-motion';
 
 const parent = {
-    hidden : { opacity: 0 ,scale: 0.9},
-    visible : { opacity: 1,scale: 1},
+    hidden: { opacity: 0, scale: 0.9 },
+    visible: {
+        opacity: 1, scale: 1, transition: {
+            ease: 'easeInOut',
+            duration: 2,
+            delayChildren: 0.5,
+            staggerChildren: 0.5
+        }
+    },
+    hover: {
+        scale: 1,
+        transition: {
+            duration: 0.5
+        }
+    },
+    tap: {
+        scale: 1,
+        rotate: 45
+    }
 }
 
-const child = {
-    hidden : { opacity: 0 ,scale: 0.1},
-    visible : { opacity: 1,scale: 1},
-}
+// const child = {
+//     hidden: { opacity: 0, scale: 0.1 },
+//     visible: { opacity: 1, scale: 1 },
+// }
 
 const Lesson1 = () => {
     return (
@@ -19,34 +36,12 @@ const Lesson1 = () => {
                 variants={parent}
                 initial='hidden'
                 animate='visible'
-                transition={{ 
-                    ease: 'easeInOut',
-                    duration: 1.5,
-                    delayChildren: 0.5,
-                    staggerChildren: 0.5
-                }}
-                >
-                    <motion.div 
-                    className="bg-cyan-400 size-20 rounded-sm"
-                    variants={child}
-                    >
-                    </motion.div>
-                    <motion.div
-                    className="bg-cyan-400 size-20 rounded-sm"
-                    variants={child}
-                    >
-                    </motion.div>
-                    <motion.div
-                    className="bg-cyan-400 size-20 rounded-sm"
-                    variants={child}
-                    >
-                    </motion.div>
-                    <motion.div
-                    className="bg-cyan-400 size-20 rounded-sm"
-                    variants={child}
-                    >
-                    </motion.div>
-                </motion.div>
+                whileHover='hover'
+                whileTap='tap'
+                onHoverStart={()=> console.log('hover start')}
+                onHoverEnd={()=> console.log('hover end')}
+            >
+            </motion.div>
         </div>
     );
 };
