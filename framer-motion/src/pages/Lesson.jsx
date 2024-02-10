@@ -14,7 +14,6 @@ const Lesson = () => {
             <motion.div className='size-64 bg-indigo-500 rounded-lg flex flex-wrap gap-5'
             animate={animate}
             onTap={()=> cycle()}>
-
             </motion.div>
         </div>
     );
