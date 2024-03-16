@@ -1,5 +1,6 @@
 import './App.css'
-import Lesson7 from './pages/Lesson7'
+// import Lesson7 from './pages/Lesson7'
+import Lesson8 from './pages/Lesson8'
 // import Lesson from './pages/Lesson'
 // import Lesson4 from './pages/Lesson4'
 // import Lesson5 from './pages/Lesson5'
@@ -11,19 +12,22 @@ import Lesson7 from './pages/Lesson7'
 function App() {
 
   return (
-   <div className='w-full h-screen flex flex-col justify-center items-center'>
-     {/* <Lesson1/> */}
-     {/* <Lesson2 />  */}
-     {/* <Lesson3/> */}
-     {/* <Lesson /> */}
-     {/* <div className='h-[200vh] w-full bg-red-500'></div> */}
-    
-     {/* <Lesson4 /> */}
-    {/* <Lesson5/> */}
-    {/* <Lesson6/> */}
-    <Lesson7/>
-    
-   </div>
+    <div className='w-full h-screen flex flex-col justify-center items-center'>
+      {/* <Lesson1/> */}
+      {/* <Lesson2 />  */}
+      {/* <Lesson3/> */}
+      {/* <Lesson /> */}
+      {/* <div className='h-[200vh] w-full bg-red-500'></div> */}
+
+      {/* <Lesson4 /> */}
+      {/* <Lesson5/> */}
+      {/* <Lesson6/> */}
+      {/* <Lesson7/> */}
+      <div className='h-[500vh] w-full bg-red-500'>
+        <Lesson8 />
+      </div>
+
+    </div>
 
   )
 }
