@@ -1,13 +1,8 @@
-import { Button } from "./components/ui/button"
+import MainLayout from "./components/layouts/MainLayout"
 
 function App() {
 
-  return (
-    <>
-      <div>React + Tailwind + RRD</div>
-      <Button>Something</Button>
-    </>
-  )
+  return <MainLayout/>
 }
 
 export default App
