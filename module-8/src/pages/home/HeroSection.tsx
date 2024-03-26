@@ -16,11 +16,32 @@ const intro = {
 };
 const introChildren = {
     hidden: { opacity: 0, y: -200 },
-    visible: { opacity: 1, y: 0, transition: {duration: 0.7, type: 'spring', bounce: 0.5} }
+    visible: { opacity: 1, y: 0, transition: { duration: 0.7, type: 'spring', bounce: 0.5 } }
+}
+
+const laptop = {
+    initial: {
+        y: 0,
+        rotate: 0,
+        scale: 5
+    },
+    animate: {
+        y: 20,
+        scale: 1,
+        rotate: -30,
+        transition: {
+            duration: 1,
+            y:{repeat: Infinity,
+            duration: 2,
+            repeatType : "reverse",
+            ease: "easeInOut",}
+        }
+    },
 }
 const HeroSection = () => {
     return (
-        <Container className="h-[calc(100vh-64px)] grid grid-cols-1 lg:grid-cols-2 place-content-center">
+        <div className="overflow-hidden">
+            <Container className="h-[calc(100vh-64px)] grid grid-cols-1 lg:grid-cols-2 place-content-center">
             <motion.div
                 variants={intro}
                 initial="hidden"
@@ -46,10 +67,15 @@ const HeroSection = () => {
                     </Button>
                 </motion.div>
             </motion.div>
-            <div className="mt-10 w-3/4 lg:w-full mx-auto">
-                <img className="-rotate-[35deg] h-[95%] object-contain" src={macbook} alt="" srcSet="" />
-            </div>
+            <motion.div
+                variants={laptop}
+                initial="initial"
+                animate="animate"
+                className="mt-10 w-3/4 lg:w-full mx-auto">
+                <img className="h-[95%] object-contain" src={macbook} alt="" srcSet="" />
+            </motion.div>
         </Container>
+        </div>
     );
 };
 
