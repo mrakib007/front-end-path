@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import {useQuery} from '@tanstack/react-query';
 import { getServices } from "@/api/admin/services/service.api";
 
@@ -25,6 +24,10 @@ const ServiceList = () => {
         return <p>Loading...</p>
     }
     console.log(data,isLoading,isError);
+    
+    if(isError){
+        return <p>Something went wrong</p>
+    }
     return (
         <div>
             {
