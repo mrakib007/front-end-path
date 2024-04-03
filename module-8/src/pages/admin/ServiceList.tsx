@@ -4,6 +4,7 @@ import { Table, TableBody, TableCaption, TableCell, TableFooter, TableHead, Tabl
 import { Button } from '@/components/ui/button';
 import Container from '@/components/Container';
 import { Trash2 } from 'lucide-react';
+import { useGetServices } from '@/api/admin/services/service.hook';
 
 const ServiceList = () => {
     // const [data,setData] = useState([]);
@@ -20,19 +21,7 @@ const ServiceList = () => {
 
 
 
-    const { data: services, isLoading, isError } = useQuery({
-        queryKey: ['services'],
-        queryFn: getServices,
-        select: (data) => {
-            const services = data?.data?.map(item => ({
-                id: item._id,
-                name: item.name,
-                description: item.description,
-                price: item.price
-            }));
-            return services;
-        }
-    })
+    const { data: services, isLoading, isError } = useGetServices();
     if (isLoading) {
         return <p>Loading...</p>
     }
