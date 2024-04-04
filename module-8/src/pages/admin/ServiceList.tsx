@@ -1,12 +1,41 @@
-import { useQuery } from '@tanstack/react-query';
-import { getServices } from "@/api/admin/services/service.api";
+import { useMutation, useQuery } from '@tanstack/react-query';
+// import { getServices } from "@/api/admin/services/service.api";
 import { Table, TableBody, TableCaption, TableCell, TableFooter, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Button } from '@/components/ui/button';
 import Container from '@/components/Container';
 import { Trash2 } from 'lucide-react';
 import { useGetServices } from '@/api/admin/services/service.hook';
+import { useState } from 'react';
 
 const ServiceList = () => {
+    const [serviceName, setServiceName] = useState('');
+
+    const { mutateAsync, isError: postError, isSuccess } = useMutation({
+        mutationFn: async (data) => {
+            return await fetch('http://localhost:5000/api/v1/services', {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            }
+            )
+        }
+    })
+    console.log(postError, isSuccess);
+
+    const handleSubmit = (e: FormEvent) => {
+        e.preventDefault();
+        const serviceData = {
+            name: serviceName,
+            description: 'Replace any dead chips',
+            devices: ['Macbook Pro', 'Macbook Air', 'Macbook', 'iMac', 'Mac Pro', 'Mac Mini'],
+            price: 1000,
+        }
+        console.log(serviceData);
+        await mutateAsync(serviceData);
+        console.log('done')
+    }
     // const [data,setData] = useState([]);
     // const [error,setError] = useState(null);
     // const [loading,isLoading] = useState(false);
@@ -69,6 +98,12 @@ const ServiceList = () => {
                     </TableRow>
                 </TableFooter>
             </Table>
+            <div>
+            <form onSubmit={handleSubmit}>
+                <input type="text" onChange={(e) => setServiceName(e.target.value)} />
+                <Button type="submit">Submit</Button>
+            </form>
+        </div>
         </Container>
     );
 };
