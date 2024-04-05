@@ -13,7 +13,10 @@ export const useGetServices = () => {
                 price: item.price
             }));
             return services;
-        }
+        },
+        // gcTime: 5000,
+        // staleTime: 3000,
+        // staleTime: Infinity,
     })
     return servicesData;
 }
