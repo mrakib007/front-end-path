@@ -1,14 +1,15 @@
-import { useMutation, useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 // import { getServices } from "@/api/admin/services/service.api";
 import { Table, TableBody, TableCaption, TableCell, TableFooter, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Button } from '@/components/ui/button';
 import Container from '@/components/Container';
 import { Trash2 } from 'lucide-react';
 import { useGetServices } from '@/api/admin/services/service.hook';
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
 
 const ServiceList = () => {
     const [serviceName, setServiceName] = useState('');
+    const queryClient = useQueryClient();
 
     const { mutateAsync, isError: postError, isSuccess } = useMutation({
         mutationFn: async (data) => {
@@ -20,11 +21,14 @@ const ServiceList = () => {
                 }
             }
             )
+        },
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: ['services'] })
         }
     })
     console.log(postError, isSuccess);
 
-    const handleSubmit = (e: FormEvent) => {
+    const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
         const serviceData = {
             name: serviceName,
@@ -99,11 +103,11 @@ const ServiceList = () => {
                 </TableFooter>
             </Table>
             <div>
-            <form onSubmit={handleSubmit}>
-                <input type="text" onChange={(e) => setServiceName(e.target.value)} />
-                <Button type="submit">Submit</Button>
-            </form>
-        </div>
+                <form onSubmit={handleSubmit}>
+                    <input type="text" onChange={(e) => setServiceName(e.target.value)} />
+                    <Button type="submit">Submit</Button>
+                </form>
+            </div>
         </Container>
     );
 };
