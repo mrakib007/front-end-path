@@ -14,7 +14,10 @@ const AddTodoModal = () => {
 
     const onSubmit = (e: React.FormEvent) => {
         e.preventDefault();
+
+        const randomString = Math.random().toString(36).substring(2,7);
         const taskDetails = {
+            id: randomString,
             title: task,
             description: description
         }
