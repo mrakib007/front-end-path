@@ -6,7 +6,7 @@ import { useGetTodosQuery } from "@/redux/api/api";
 
 const TodoContainer = () => {
     //From Local State.
-    const { todos } = useAppSelector((state) => state.todos);
+    // const { todos } = useAppSelector((state) => state.todos);
 
     //From server
     const { data, isLoading, isError } = useGetTodosQuery(undefined);
