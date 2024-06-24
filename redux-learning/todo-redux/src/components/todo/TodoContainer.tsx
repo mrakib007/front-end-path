@@ -1,4 +1,4 @@
-import { useAppSelector } from "@/redux/hook";
+// import { useAppSelector } from "@/redux/hook";
 import AddTodoModal from "./AddTodoModal";
 import TodoCard from "./TodoCard";
 import TodoFilter from "./TodoFilter";
@@ -9,7 +9,7 @@ const TodoContainer = () => {
     // const { todos } = useAppSelector((state) => state.todos);
 
     //From server
-    const { data, isLoading, isError } = useGetTodosQuery(undefined);
+    const { data: todos, isLoading, isError } = useGetTodosQuery(undefined);
 
     if(isLoading) return <p>Loading...</p>
     return (
