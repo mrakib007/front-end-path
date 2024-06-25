@@ -5,12 +5,14 @@ import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 import { DialogClose } from "@radix-ui/react-dialog";
 import { useAddTodosMutation } from "@/redux/api/api";
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "../ui/select";
 // import { useAppDispatch } from "@/redux/hook";
 // import { addTodo } from "@/redux/features/todoSlice";
 
 const AddTodoModal = () => {
     const [task, setTask] = useState('');
     const [description, setDescription] = useState('');
+    const [priority, setPriority] = useState('');
     //For local state management
     // const dispatch = useAppDispatch();
 
@@ -25,8 +27,9 @@ const AddTodoModal = () => {
         const taskDetails = {
             // id: randomString,
             title: task,
-            description: description,
-            // priority: 
+            description,
+            priority,
+            isCompleted: false
         }
         //For local state management
         // dispatch(addTodo(taskDetails))
@@ -68,6 +71,24 @@ const AddTodoModal = () => {
                                 className="col-span-3"
                             />
                         </div>
+                        <div className="grid grid-cols-4 items-center gap-4">
+                            <Label className="text-right">
+                                Priority
+                            </Label>
+                            <Select onValueChange={(value) => setPriority(value)}>
+                                <SelectTrigger className="col-span-3">
+                                    <SelectValue placeholder="Theme" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectGroup>
+                                        <SelectLabel>Priority</SelectLabel>
+                                        <SelectItem value="high">High</SelectItem>
+                                        <SelectItem value="medium">Medium</SelectItem>
+                                        <SelectItem value="low">Low</SelectItem>
+                                    </SelectGroup>
+                                </SelectContent>
+                            </Select>
+                        </div>
                     </div>
                     <div className="flex justify-end">
                         <DialogClose asChild>
@@ -76,7 +97,7 @@ const AddTodoModal = () => {
                     </div>
                 </form>
             </DialogContent>
-        </Dialog>
+        </Dialog >
     );
 };
 
